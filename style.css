@@ -1,0 +1,187 @@
+/* 基礎變數與主題設定 */
+:root {
+  --bg-color: #0b0c10;
+  --card-bg: rgba(31, 33, 40, 0.5);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f2f2f2;
+  --text-second: #b8b8b8;
+  --accent: #66fcf1;
+  --accent-glow: rgba(102, 252, 241, 0.4);
+}
+
+/* 重置預設樣式 */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+/* 整體背景與字型 */
+body {
+  font-family: 'Noto Sans TC', 'Outfit', sans-serif;
+  background-color: var(--bg-color);
+  /* 使用徑向漸層來製造類似星空或神秘的微光背景 */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(102, 252, 241, 0.06), transparent 30%),
+    radial-gradient(circle at 85% 30%, rgba(200, 102, 252, 0.06), transparent 30%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header { 
+  text-align: center; 
+  padding: 4rem 1rem 2.5rem; 
+}
+
+header h1 { 
+  font-size: 2.8rem; 
+  font-weight: 700; 
+  margin-bottom: 0.8rem; 
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #fff, #66fcf1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header p { 
+  color: var(--text-second); 
+  font-size: 1.1rem; 
+}
+
+main { 
+  flex: 1; 
+  padding: 2rem; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  width: 100%; 
+}
+
+/* 角色展覽網格 */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+/* --- 卡片設計 (Glassmorphism 毛玻璃效果) --- */
+.role-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  position: relative;
+  text-decoration: none; /* 卡片本身是連結，去除底線 */
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* 懸停效果 (Hover) */
+.role-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-glow);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 圖片容器：保持長方形比例 */
+.img-container {
+  width: 100%;
+  aspect-ratio: 16 / 10; /* 長方形比例 */
+  overflow: hidden;
+  position: relative;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.role-card:hover .img-container img { 
+  transform: scale(1.08); 
+}
+
+/* 在圖片上方覆蓋「進入 GEM」提示 */
+.img-container::after {
+  content: "✦ 進入 GEM ✦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(11, 12, 16, 0.7);
+  backdrop-filter: blur(5px);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.role-card:hover .img-container::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 卡片文字區塊 */
+.card-content { 
+  padding: 1.8rem 1.5rem; 
+  display: flex; 
+  flex-direction: column; 
+  flex: 1; 
+}
+
+.role-name { 
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  margin-bottom: 0.4rem; 
+  color: #ffffff;
+}
+
+.designer {
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 設計者前方的螢光點 */
+.designer::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.description {
+  font-size: 0.95rem;
+  color: var(--text-second);
+  line-height: 1.7;
+  flex: 1; /* 讓文字撐開剩餘空間 */
+}
+
+footer { 
+  text-align: center; 
+  padding: 2rem; 
+  color: var(--text-second); 
+  font-size: 0.9rem; 
+}
