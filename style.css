@@ -181,7 +181,16 @@ main {
   font-size: 0.95rem;
   color: var(--text-second);
   line-height: 1.7;
-  flex: 1; /* 讓文字撐開剩餘空間 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.role-card:hover .description {
+  display: block;
+  overflow: visible;
 }
 
 footer { 
