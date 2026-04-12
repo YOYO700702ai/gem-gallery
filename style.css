@@ -20,10 +20,9 @@
 body {
   font-family: 'Noto Sans TC', 'Outfit', sans-serif;
   background-color: var(--bg-color);
-  /* 使用徑向漸層來製造類似星空或神秘的微光背景 */
-  background-image: 
-    radial-gradient(circle at 15% 50%, rgba(102, 252, 241, 0.06), transparent 30%),
-    radial-gradient(circle at 85% 30%, rgba(200, 102, 252, 0.06), transparent 30%);
+  background-image: url('assets/bg.png');
+  background-size: cover;
+  background-position: center;
   background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100vh;
