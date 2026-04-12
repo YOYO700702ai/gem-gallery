@@ -3,7 +3,7 @@
  * 資料來源：Google Apps Script (試算表 JSON API)
  * 只有「圖片已生成的完整資料」才會出現在試算表中，無需無圖防呆。
  */
-const API_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE"; // 步驟 2 完成後填入
+const API_URL = "https://script.google.com/macros/s/AKfycbwWvvkAoDzom-EY5SNh6wMZLaQcyK4QMTimzag0wlsSOlHKqmSLllVzI-YfMEpRjDc/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
