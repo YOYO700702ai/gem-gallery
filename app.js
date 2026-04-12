@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <div class="card-content">
             <h2 class="role-name">${role.name}</h2>
-            <div class="designer">Designed by ${role.designer}</div>
+            <div class="designer">BY ${role.designer}${role.organization ? ' - ' + role.organization : ''}</div>
             <p class="description">${role.description}</p>
           </div>
         `;
