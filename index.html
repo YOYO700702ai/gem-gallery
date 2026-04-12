@@ -4,25 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GEM 角色展覽館</title>
-  
-  <!-- SEO 與 Meta 標籤 -->
   <meta name="description" content="匯集學員所製作的最佳 GEM 角色。">
-  
-  <!-- 引入 Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
-  
-  <!-- 引入自訂樣式 -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+
   <header>
     <h1>✨ GEM 角色展覽館 ✨</h1>
-    <p>點擊角色圖卡，將會直接進入專屬的 GEM 介面</p>
+    <p>點擊角色圖卡，查看介紹並進入專屬的 GEM 介面</p>
   </header>
-  
+
   <main>
     <div id="gallery-grid" class="gallery-grid">
       <!-- 角色卡片將會透過 app.js 動態生成於此 -->
@@ -33,7 +27,22 @@
     <p>© 2026 GEM 角色展覽館 - 僅做展示與教學用途。</p>
   </footer>
 
-  <!-- 引入邏輯腳本 -->
+  <!-- Modal 視窗 -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-image">
+        <img id="modal-img" src="" alt="">
+      </div>
+      <div class="modal-body">
+        <h2 id="modal-name"></h2>
+        <div id="modal-designer" class="designer"></div>
+        <p id="modal-desc"></p>
+        <a id="modal-btn" href="#" target="_blank" rel="noopener noreferrer" class="gem-btn">✦ 進入 GEM ✦</a>
+      </div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>

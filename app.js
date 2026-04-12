@@ -1,23 +1,43 @@
-/**
- * GEM 角色展覽館資料層
- * 資料來源：Google Apps Script (試算表 JSON API)
- * 只有「圖片已生成的完整資料」才會出現在試算表中，無需無圖防呆。
- */
 const API_URL = "https://script.google.com/macros/s/AKfycbwWvvkAoDzom-EY5SNh6wMZLaQcyK4QMTimzag0wlsSOlHKqmSLllVzI-YfMEpRjDc/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
   const galleryGrid = document.getElementById("gallery-grid");
+  const modalOverlay = document.getElementById("modal-overlay");
+  const modalClose = document.getElementById("modal-close");
 
+  // 開啟 modal
+  function openModal(role) {
+    document.getElementById("modal-img").src = role.image;
+    document.getElementById("modal-img").alt = role.name;
+    document.getElementById("modal-name").textContent = role.name;
+    document.getElementById("modal-designer").textContent =
+      "BY " + role.designer + (role.organization ? " # " + role.organization : "");
+    document.getElementById("modal-desc").textContent = role.description;
+    document.getElementById("modal-btn").href = role.gemUrl;
+    modalOverlay.classList.add("active");
+  }
+
+  // 關閉 modal
+  function closeModal() {
+    modalOverlay.classList.remove("active");
+  }
+
+  modalClose.addEventListener("click", closeModal);
+  modalOverlay.addEventListener("click", (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
+
+  // 載入卡片
   fetch(API_URL)
     .then(res => res.json())
     .then(rolesData => {
       rolesData.forEach(role => {
-        const card = document.createElement("a");
+        const card = document.createElement("div");
         card.className = "role-card";
-        card.href = role.gemUrl;
-        card.target = "_blank";
-        card.rel = "noopener noreferrer";
 
         card.innerHTML = `
           <div class="img-container">
@@ -26,10 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="card-content">
             <h2 class="role-name">${role.name}</h2>
             <div class="designer">BY ${role.designer}${role.organization ? ' # ' + role.organization : ''}</div>
-            <p class="description">${role.description}</p>
           </div>
         `;
 
+        card.addEventListener("click", () => openModal(role));
         galleryGrid.appendChild(card);
       });
     })
