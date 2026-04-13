@@ -154,6 +154,35 @@ main {
   box-shadow: 0 0 8px var(--accent);
 }
 
+/* 標籤群組：圖片左上角 */
+.tag-group {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tag {
+  font-size: 0.7rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+  padding: 2px 8px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.5px;
+}
+
+.tag-sep {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
 /* Modal 遮罩 */
 .modal-overlay {
   display: none;

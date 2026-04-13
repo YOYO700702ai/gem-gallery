@@ -39,9 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const card = document.createElement("div");
         card.className = "role-card";
 
+        const tagsHtml = [role.tag1, role.tag2]
+          .filter(t => t)
+          .map(t => `<span class="tag">${t}</span>`)
+          .join('<span class="tag-sep">×</span>');
+
         card.innerHTML = `
           <div class="img-container">
             <img src="${role.image}" alt="${role.name} 的角色畫像">
+            ${tagsHtml ? `<div class="tag-group">${tagsHtml}</div>` : ''}
           </div>
           <div class="card-content">
             <h2 class="role-name">${role.name}</h2>
