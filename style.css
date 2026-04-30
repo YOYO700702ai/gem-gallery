@@ -45,9 +45,22 @@ header h1 {
   -webkit-text-fill-color: transparent;
 }
 
-header p { 
-  color: var(--text-second); 
-  font-size: 1.1rem; 
+header p {
+  color: var(--text-second);
+  font-size: 1.1rem;
+}
+
+.closed-badge {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 80, 80, 0.5);
+  border-radius: 50px;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 main { 
